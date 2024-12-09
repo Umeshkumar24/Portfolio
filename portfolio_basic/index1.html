@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Your Name]'s Computer Science Portfolio</title>
+    <style>
+        /* Default Light Theme */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            /* Light gray background */
+            color: #333;
+            /* Dark text color */
+        }
+
+        header {
+            background-color: #22e0aaf0;
+            /* Blue header background */
+            color: #fff;
+            /* White text color */
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #22e0aaf0;
+            /* Blue background color */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 50px;
+            /* Adjust the height as needed */
+        }
+
+        .navbar li {
+            margin: 0;
+        }
+
+        .navbar a {
+            color: #fff;
+            /* White text color */
+            text-decoration: none;
+            padding: 10px 20px;
+            /* Adjust padding as needed */
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #0fb88b;
+            /* Darker blue on hover */
+        }
+
+        /* Center the navbar horizontally */
+        .navbar-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .theme-toggle {
+            margin-left: 20px;
+            /* Add margin to separate it from other items */
+        }
+
+        /* Dark theme toggle styles */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 25px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
+            border-radius: 25px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 21px;
+            width: 21px;
+            left: 2px;
+            bottom: 2px;
+            background-color: #fff;
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #22e0aaf0;
+            /* Blue background color when active (light theme) */
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(25px);
+            -ms-transform: translateX(25px);
+            transform: translateX(25px);
+            background-color: #fff;
+        }
+
+        /* Dark theme toggle styles when dark theme is active */
+        body.dark-theme input:checked+.slider {
+            background-color: #333;
+            /* Dark background color when active (dark theme) */
+        }
+
+        body.dark-theme input:checked+.slider:before {
+            background-color: #fff;
+        }
+
+        /* Dark Theme */
+        body.dark-theme {
+            background-color: #333;
+            /* Dark background */
+            color: #fff;
+            /* Light text color */
+        }
+
+        header.dark-theme {
+            background-color: #444;
+            /* Dark header background */
+        }
+
+        /* Style headers within sections */
+        section h2 {
+            color: #22e0aaf0;
+            /* Blue header color */
+            margin-bottom: 10px;
+        }
+
+        /* Style links */
+        a {
+            color: #22e0aaf0;
+            /* Blue link color */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            /* Underline links on hover */
+        }
+
+        /* Style unordered lists within sections */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Education Section */
+        section.education {
+            background-color: #fff;
+            /* White background for light theme */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            color: #333;
+            /* Dark text color for light theme */
+        }
+
+        /* Dark Theme: Adjust styles for Education Section in dark theme */
+        body.dark-theme section.education {
+            background-color: #333;
+            /* Dark background for dark theme */
+            color: #fff;
+            /* Light text color for dark theme */
+        }
+
+        /* Contact Information Section */
+        section.contact {
+            background-color: #fff;
+            /* White background for light theme */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            color: #333;
+            /* Dark text color for light theme */
+        }
+
+        /* Dark Theme: Adjust styles for Contact Information Section in dark theme */
+        body.dark-theme section.contact {
+            background-color: #333;
+            /* Dark background for dark theme */
+            color: #fff;
+            /* Light text color for dark theme */
+        }
+
+        /* Projects Section */
+        section.projects {
+            background-color: #f9f9f9;
+            /* Light gray background for both themes */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            color: #333;
+            /* Dark text color for both themes */
+        }
+
+        /* Dark Theme: Adjust styles for Projects Section in dark theme */
+        body.dark-theme section.projects {
+            background-color: #444;
+            /* Dark gray background for dark theme */
+        }
+
+        /* Certifications Section */
+        section.certifications {
+            background-color: #f9f9f9;
+            /* Light gray background for both themes */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            color: #333;
+            /* Dark text color for both themes */
+        }
+
+        /* Dark Theme: Adjust styles for Certifications Section in dark theme */
+        body.dark-theme section.certifications {
+            background-color: #444;
+            /* Dark gray background for dark theme */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            /* Light gray background */
+            color: #333;
+            /* Dark text color */
+        }
+
+        header {
+            background-color: #22e0aaf0;
+            /* Blue header background */
+            color: #fff;
+            /* White text color */
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Dark Theme */
+        body.dark-theme {
+            background-color: #333;
+            /* Dark background */
+            color: #fff;
+            /* Light text color */
+        }
+
+        header.dark-theme {
+            background-color: #444;
+            /* Dark header background */
+        }
+
+        /* Education Section */
+        section.education {
+            background-color: #fff;
+            /* White background for light theme */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            color: #333;
+            /* Dark text color for light theme */
+        }
+
+        /* Dark Theme: Adjust styles for Education Section in dark theme */
+        body.dark-theme section.education {
+            background-color: #333;
+            /* Dark background for dark theme */
+            color: #fff;
+            /* Light text color for dark theme */
+        }
+
+        /* Contact Information Section */
+        section.contact {
+            background-color: #fff;
+            /* White background for light theme */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            color: #333;
+            /* Dark text color for light theme */
+        }
+
+        /* Dark Theme: Adjust styles for Contact Information Section in dark theme */
+        body.dark-theme section.contact {
+            background-color: #333;
+            /* Dark background for dark theme */
+            color: #fff;
+            /* Light text color for dark theme */
+        }
+
+        /* Projects Section */
+        section.projects {
+            background-color: #f9f9f9;
+            /* Light gray background for both themes */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            color: #333;
+            /* Dark text color for both themes */
+        }
+
+        /* Dark Theme: Adjust styles for Projects Section in dark theme */
+        body.dark-theme section.projects {
+            background-color: #444;
+            /* Dark gray background for dark theme */
+        }
+
+        /* Certifications Section */
+        section.certifications {
+            background-color: #f9f9f9;
+            /* Light gray background for both themes */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            color: #333;
+            /* Dark text color for both themes */
+        }
+
+        /* Dark Theme: Adjust styles for Certifications Section in dark theme */
+        body.dark-theme section.certifications {
+            background-color: #444;
+            /* Dark gray background for dark theme */
+        }
+
+        /* Personal Projects Section */
+        section.personal-projects {
+            background-color: #f9f9f9;
+            /* Light gray background for both themes */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            color: #333;
+            /* Dark text color for both themes */
+        }
+
+        /* Dark Theme: Adjust styles for Personal Projects Section in dark theme */
+        body.dark-theme section.personal-projects {
+            background-color: #444;
+            /* Dark gray background for dark theme */
+        }
+
+        /* Awards and Honors Section */
+        section.awards {
+            background-color: #f9f9f9;
+            /* Light gray background for both themes */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            color: #333;
+            /* Dark text color for both themes */
+        }
+
+
+        header {
+            background-color: #22e0aaf0;
+            /* Blue header background */
+            color: #fff;
+            /* White text color */
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Dark Theme */
+        body.dark-theme {
+            background-color: #333;
+            /* Dark background */
+            color: #fff;
+            /* Light text color */
+        }
+
+        header.dark-theme {
+            background-color: #444;
+            /* Dark header background */
+        }
+
+        /* Education Section */
+        section:nth-child(3) {
+            background-color: #fff;
+            /* White background */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+        }
+
+        /* Projects Section */
+        section:nth-child(4) {
+            background-color: #f9f9f9;
+            /* Light gray background */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+        }
+
+        /* Style headers within sections */
+        section h2 {
+            color: #22e0aaf0;
+            /* Blue header color */
+            margin-bottom: 10px;
+        }
+
+        /* Style links */
+        a {
+            color: #22e0aaf0;
+            /* Blue link color */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            /* Underline links on hover */
+        }
+
+        /* Style unordered lists within sections */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Personal Projects Section */
+        section.personal-projects {
+            background-color: #f9f9f9;
+            /* Light gray background for both themes */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            color: #333;
+            /* Dark text color for both themes */
+        }
+
+        /* Dark Theme: Adjust styles for Personal Projects Section in dark theme */
+        body.dark-theme section.personal-projects {
+            background-color: #444;
+            /* Dark gray background for dark theme */
+        }
+
+        /* Awards and Honors Section */
+        section.awards {
+            background-color: #f9f9f9;
+            /* Light gray background for both themes */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            color: #333;
+            /* Dark text color for both themes */
+        }
+
+        /* Dark Theme: Adjust styles for Awards and Honors Section in dark theme */
+        body.dark-theme section.awards {
+            background-color: #444;
+            /* Dark gray background for dark theme */
+        }
+
+        /* References Section */
+        section.references {
+            background-color: #f9f9f9;
+            /* Light gray background for both themes */
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            color: #333;
+            /* Dark text color for both themes */
+        }
+
+        /* Dark Theme: Adjust styles for References Section in dark theme */
+        body.dark-theme section.references {
+            background-color: #444;
+            /* Dark gray background for dark theme */
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>[Your Name]'s Computer Science Portfolio</h1>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="navbar-container">
+        <ul class="navbar">
+            <li><a href="#introduction"><i class="fas fa-user"></i> Introduction</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+            <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
+            <li><a href="#certifications"><i class="fas fa-certificate"></i> Certifications</a></li>
+            <li><a href="#personal-projects"><i class="fas fa-laptop"></i> Personal Projects</a></li>
+            <li><a href="#awards"><i class="fas fa-award"></i> Awards</a></li>
+            <li><a href="#references"><i class="fas fa-users"></i> References</a></li>
+            <li class="theme-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </li>
+        </ul>
+    </nav>
+
+
+
+    <section id="introduction" class="contact">
+        <h2></h2>
+        <p>Seeking a career that allows to channel
+            my fervor into meaningful work and drive
+             innovation in my chosen field.</p>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Information</h2>
+        <ul>
+            <li>Email: [Your Email Address]</li>
+            <li><i class="fas fa-linkedin-in"></i>LinkedIn: <a href="[Your LinkedIn Profile URL]" target="_blank">LinkedIn Profile</a></li>
+            <li><i class="fas fa-github-square"></i>GitHub: <a href="[Your GitHub Profile URL]" target="_blank">GitHub Profile</a></li>
+        </ul>
+    </section>
+
+    <section id="education" class="education">
+        <h2>Education</h2>
+        <ul>
+            <li>
+                <strong>Bachelor of Science in Computer Science</strong><br>
+                University Name<br>
+                Expected Graduation Date: [Month, Year]<br>
+                Relevant Coursework: [List some of your relevant courses]
+            </li>
+            <!-- Add more education entries if applicable -->
+        </ul>
+    </section>
+
+    <section id="projects" class="education">
+        <h2>Projects</h2>
+        <ul>
+            <li>
+                <strong>Project Title 1</strong><br>
+                Description: [Briefly describe the project, its goals, and your role]<br>
+                Technologies Used: [List the technologies, languages, and tools]<br>
+                GitHub Repository: <a href="[Link to the GitHub repository]" target="_blank">GitHub Repository</a>
+            </li>
+            <li>
+                <strong>Project Title 2</strong><br>
+                Description: [Briefly describe the project, its goals, and your role]<br>
+                Technologies Used: [List the technologies, languages, and tools]<br>
+                GitHub Repository: <a href="[Link to the GitHub repository]" target="_blank">GitHub Repository</a>
+            </li>
+            <!-- Add more project entries as needed -->
+        </ul>
+    </section>
+    <section id="" class="education">
+        <h2>Internship and Work Experience</h2>
+        <ul>
+            <li>
+                <strong>Internship/Job Title 1</strong><br>
+                Company/Organization: [Company Name]<br>
+                Duration: [Month/Year - Month/Year]<br>
+                Description: [Describe your responsibilities and achievements]
+            </li>
+            <li>
+                <strong>Internship/Job Title 2</strong><br>
+                Company/Organization: [Company Name]<br>
+                Duration: [Month/Year - Month/Year]<br>
+                Description: [Describe your responsibilities and achievements]
+            </li>
+            <!-- Add more work experience entries as needed -->
+        </ul>
+    </section>
+
+    <section id="skills" class="education">
+        <h2>Skills</h2>
+        <ul>
+            <li>Programming Languages: [List programming languages you are proficient in]</li>
+            <li>Web Development: [List relevant web development skills]</li>
+            <li>Software Development: [List relevant software development skills]</li>
+            <li>Databases: [List database technologies you are familiar with]</li>
+            <li>Tools and Technologies: [List any other relevant tools or technologies]</li>
+        </ul>
+    </section>
+
+    <section id="certificates" class="education">
+        <h2>Certifications</h2>
+        <ul>
+            <li>
+                <strong>Applied Machine Learning</strong><br>
+                Issuing Organization: [Organization Name]<br>
+                Date Earned: [Month, Year]<br>
+                Description
+                    Participated in the weeklong webinar on applied Machine Learning.
+                    Attended the lectures of researchprofessorsacrossIndia and learnt 
+                        about the types of ML models and AI techniques and how the
+                        generative AI work
+            </li>
+            <li>
+                <strong>August Leet-Coding Badge</strong><br>
+                Issuing Organization:LeetCode<br>
+                Date Earned: August, 2023<br>
+                Description: Completed the month long 30 days of code challenge 
+                and received the monthly badge
+            </li>
+            <!-- Add more certification entries as needed -->
+        </ul>
+        
+    </section>
+
+    <section id="personal-projects" class="education">
+        <h2>Personal Projects</h2>
+        <ul>
+            <li>
+                <strong>Project Title 3</strong><br>
+                Description: [Briefly describe the project, its goals, and your role]<br>
+                Technologies Used: [List the technologies, languages, and tools]<br>
+                GitHub Repository: <a href="[Link to the GitHub repository]" target="_blank">GitHub Repository</a>
+            </li>
+            <li>
+                <strong>Project Title 4</strong><br>
+                Description: [Briefly describe the project, its goals, and your role]<br>
+                Technologies Used: [List the technologies, languages, and tools]<br>
+                GitHub Repository: <a href="[Link to the GitHub repository]" target="_blank">GitHub Repository</a>
+            </li>
+            <!-- Add more personal project entries as needed -->
+        </ul>
+    </section>
+
+
+    <section id="awards" class="education">
+        <h2>Awards and Honors</h2>
+        <ul>
+            <li>
+                <strong>Scholarship Name 1</strong><br>
+                Description: [Provide information about the scholarship and why you received it]
+            </li>
+            <li>
+                <strong>Honors or Awards 2</strong><br>
+                Description: [Provide information about the award/honor and why you received it]
+            </li>
+            <!-- Add more award and honor entries as needed -->
+        </ul>
+    </section>
+
+
+
+    <script>
+        // JavaScript for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth' // Smooth scrolling behavior
+                    });
+                }
+            });
+        });
+
+        // JavaScript for theme toggle
+        const themeToggle = document.getElementById("theme-toggle");
+        const body = document.body;
+
+        themeToggle.addEventListener("click", () => {
+            body.classList.toggle("dark-theme");
+        });
+        themeToggle.click();
+    </script>
+</body>
+
+</html>
