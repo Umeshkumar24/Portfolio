@@ -35,7 +35,7 @@ export function Description() {
   Development. Curious problem solver with interests in new technologies and inventions. Collaborative, 
   Open-minded and Quick-learner. `;
 
-  const notions = ["Coder", "Programmer", "Developer", "Engineer"];
+  const notions = ["Programmer", "Developer", "Engineer", "Researcher"];
 
   return (
     <>

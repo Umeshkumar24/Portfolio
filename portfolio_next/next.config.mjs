@@ -3,7 +3,7 @@
 const nextConfig = {
     useFileSystemPublicRoutes: true,
     // output: 'standalone',
-    output: 'export',
+    // output: 'export',
     async headers() {
         return [
             {
@@ -19,7 +19,7 @@ const nextConfig = {
     },
     images: {
         domains: ['drive.google.com', 'assets.aceternity.com'],
-        unoptimized: true,
+        // unoptimized: true,
     },
 };
 
